@@ -15,7 +15,6 @@ function search(e) {
 	let temp = results.length > 0 
 		? `<ul class="list-items">${generateListItems(results)}</ul>`
 		: `<div class="no-item">Fruit not found :(</div>`;
-	//anchor tag to li or tab index attribute to li of 1
 	suggestions.innerHTML = temp;
 	suggestions.style.display = inputValue.length > 0 ? 'block' : 'none';
 }
@@ -33,5 +32,5 @@ function useSuggestion(e) {
 	if( e.target.classList.contains('list-item')) {
 		input.value = e.target.textContent;
 		suggestions.style.display = 'none';
-	 } //else(console.log(e.type, e.keyCode))
+	 }
 }
