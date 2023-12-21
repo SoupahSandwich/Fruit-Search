@@ -6,7 +6,6 @@ const suggestions = document.querySelector('.suggestions');
 window.addEventListener('DOMContentLoaded', searchHandler);
 input.addEventListener('input', search);
 suggestions.addEventListener('click', useSuggestion);
-suggestions.addEventListener('input', useSuggestion);
 
 function search(e) {
 	const inputValue = e.target.value.toLowerCase();
@@ -15,6 +14,7 @@ function search(e) {
 	let temp = results.length > 0 
 		? `<ul class="list-items">${generateListItems(results)}</ul>`
 		: `<div class="no-item">Fruit not found :(</div>`;
+
 	suggestions.innerHTML = temp;
 	suggestions.style.display = inputValue.length > 0 ? 'block' : 'none';
 }
@@ -25,12 +25,12 @@ function searchHandler() {
 }
 
 function generateListItems(items) {
-	return items.map(item => `<li class="list-item"><a href= "#">${item}</a></li>`).join('');
+	return items.map(item => `<li class="list-item">${item}</li>`).join('');
 }
 
 function useSuggestion(e) {
 	if( e.target.classList.contains('list-item')) {
 		input.value = e.target.textContent;
 		suggestions.style.display = 'none';
-	 }
+	}
 }
